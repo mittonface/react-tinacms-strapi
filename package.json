@@ -4,7 +4,11 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
   },
   "repository": {
     "type": "git",
@@ -31,6 +35,16 @@
     "js-cookie": "^2.2.1"
   },
   "devDependencies": {
+    "@tinacms/fields": "^0.12.0",
+    "@tinacms/media": "^0.1.0",
+    "@tinacms/react-forms": "^0.2.0",
+    "@tinacms/styles": "^0.5.1",
+    "@types/js-cookie": "^2.2.6",
+    "@types/react": "^16.9.36",
+    "react-final-form": "^6.5.0",
+    "styled-components": "^5.1.1",
+    "tinacms": "^0.21.2",
+    "tsdx": "^0.13.2",
     "typescript": "^3.9.5"
   }
 }

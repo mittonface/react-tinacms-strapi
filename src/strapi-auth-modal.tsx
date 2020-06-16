@@ -10,9 +10,9 @@ import {
 } from "tinacms";
 import { STRAPI_JWT, STRAPI_URL, TinaStrapiClient } from "./tina-strapi-client";
 
-import { AsyncButton } from "./AsyncButton";
 import Cookies from "js-cookie";
 import { Input } from "@tinacms/fields";
+import React from "react";
 import popupWindow from "./popupWindow";
 
 export interface StrapiAuthenticationModalProps {
@@ -38,7 +38,7 @@ export function StrapiAuthenticationModal({
         close={close}
         onAuthSuccess={onAuthSuccess}
         onSubmit={async (values: LoginFormFieldProps) => {
-          const authStatus = await strapi
+          await strapi
             .authenticate(values.username, values.password)
             .then((authData) => {
               Cookies.set(STRAPI_JWT, authData.data.jwt);
@@ -92,11 +92,7 @@ interface LoginFormProps {
   onAuthSuccess(): void;
 }
 
-export function StrapiLoginForm({
-  onSubmit,
-  close,
-  onAuthSuccess,
-}: LoginFormProps) {
+export function StrapiLoginForm({ onSubmit, close }: LoginFormProps) {
   return (
     <>
       <Form
@@ -105,7 +101,7 @@ export function StrapiLoginForm({
           <form onSubmit={handleSubmit}>
             <Field
               name="username"
-              render={({ input, meta }) => (
+              render={({ input }) => (
                 <div>
                   <Input {...input} />
                 </div>
@@ -113,7 +109,7 @@ export function StrapiLoginForm({
             ></Field>
             <Field
               name="password"
-              render={({ input, meta }) => (
+              render={({ input }) => (
                 <div>
                   <Input type="password" {...input} />
                 </div>
@@ -149,7 +145,7 @@ export function startProviderAuth({
   window.setInterval(() => {
     const currentCookie = Cookies.get(STRAPI_JWT);
     if (currentCookie && currentCookie != previousCookie) {
-      authTab.close();
+      if (authTab) authTab.close();
       onAuthSuccess();
     }
   }, 1000);
