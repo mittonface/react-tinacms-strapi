@@ -140,9 +140,6 @@ export function startProviderAuth({
   let authTab: Window | undefined;
   const previousCookie = Cookies.get(STRAPI_JWT);
 
-  const cms = useCMS();
-  const strapi: TinaStrapiClient = cms.api.strapi;
-
   // poll the cookie value for a change. close the auth window on change
   // there are no native JS events that support this behaviour
   window.setInterval(() => {
@@ -154,7 +151,7 @@ export function startProviderAuth({
   }, 1000);
 
   authTab = popupWindow(
-    strapi.strapiUrl + `/connect/${provider}`,
+    `http://localhost:1337/connect/${provider}`,
     "_blank",
     window,
     1000,
