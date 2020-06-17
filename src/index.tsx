@@ -6,3 +6,4 @@ export * from "./strapi-media.store";
 export * from "./strapi-provider";
 export * from "./tina-strapi-client";
 export * from "./use-strapi-editing";
+export * from "./api";

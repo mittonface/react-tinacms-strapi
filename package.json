@@ -1,6 +1,6 @@
 {
-  "name": "react-tinacms-strapi",
-  "version": "0.0.1",
+  "name": "react-tinacms-strapi-bm-test",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
